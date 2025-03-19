@@ -22,7 +22,7 @@ class SignupView(APIView):
             if CustomUser.objects.filter(email=email).exists():
                 return Response({'error': 'This EmailId already taken'}, status=status.HTTP_400_BAD_REQUEST)
             user=serializer.save()
-            user.set_password(serializer.validated_data['password'])
+            # user.set_password(serializer.validated_data['password'])
             user.save()
 
             refresh= RefreshToken.for_user(user)
